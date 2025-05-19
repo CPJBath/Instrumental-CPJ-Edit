@@ -401,7 +401,15 @@ class TekScope(Scope, VisaMixin):
     def stop_acquire(self):
         """Sets the acquire state to 'stop'"""
         self.write("acquire:state stop")
+        
+    def single_acquire(self):
+        """Sets the acquire state to 'run'"""
+        self.write("acquire:STOPAfter SEQuence")
 
+    def continuous_acquire(self):
+        """Sets the acquire state to 'run'"""
+        self.write("acquire:STOPAfter RUnsTOP")
+        
     @property
     def interface_type(self):
         return self.resource.interface_type
